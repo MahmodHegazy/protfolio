@@ -310,51 +310,182 @@
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
 
-        .project-card:hover {
+.project-logo-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.project-logo {
+  max-width: 120px;
+  border-radius: 12px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.project-header h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.project-tag {
+  background: #25D366;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 8px;
+  margin-left: 0.5rem;
+}
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0366d6;
+  font-weight: 500;
+  text-decoration: none;
+}
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.project-description {
+  margin: 1rem 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.screenshots-wrapper {
+            position: relative;
+            margin: 1.5rem 0;
+            opacity: 0;
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            max-width: 100%;
+            overflow: hidden;
         }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
+        
+        .screenshots-container {
+            display: flex;
+            gap: 15px;
+            padding: 20px 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            align-items: center;
+            scrollbar-width: thin;
+            scrollbar-color: #4CAF50 #f1f1f1;
+            scroll-padding: 0 20px;
+            min-height: 420px; /* Ensure consistent height */
+        }
+        
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .project-content p {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
+            z-index: 2;
             color: #4CAF50;
-            font-weight: 600;
-            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
+        
+        .scroll-btn:hover {
+            background: #4CAF50;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .left-scroll {
+            left: 0;
+        }
+        
+        .right-scroll {
+            right: 0;
+        }
+        
+        /* Custom scrollbar for WebKit browsers */
+        .screenshots-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .screenshots-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .screenshots-container::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        .screenshots-container::-webkit-scrollbar-thumb:hover {
+            background: #3e8e41;
+        }
+
+        .screenshots-container img {
+  width: 220px;
+  height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: top;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background: white;
+  padding: 5px;
+  border: 1px solid #eee;
+}
+
+.screenshots-container img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.project-features ul,
+.project-achievements ul {
+  list-style: none;
+  padding: 0;
+}
+.project-features li,
+.project-achievements li {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0.5rem 0;
+}
+.tech-tag {
+  background: #f3f4f6;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
 
         /* Experience Section */
         .experience-item {
@@ -390,30 +521,70 @@
             font-weight: bold;
         }
 
-        /* Education Section */
+        /* Education & Certificates Section */
         .education {
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f5 100%);
+            padding: 4rem 0;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .education-card {
-            background: white;
+            background: transparent;
+            border-radius: 10px;
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05) 0%, rgba(76, 175, 80, 0.02) 100%);
+            z-index: 0;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .education-card h3 {
-            color: #4CAF50;
+            color: #2c3e50;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         .education-card p {
-            color: #666;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certificate-icon {
+            width: 32px;
+            height: 32px;
+            color: #4CAF50;
+            margin-bottom: 1.5rem;
+            background: rgba(76, 175, 80, 0.1);
+            padding: 8px;
+            border-radius: 50%;
         }
 
         /* Contact Section */
@@ -473,12 +644,8 @@
         }
         
         /* WhatsApp specific color */
-        a[title="WhatsApp"] .contact-logo {
-            color: #25D366;
-        }
-        
-        a[title="WhatsApp"]:hover .contact-logo {
-            color: white;
+        .contact-item a[title="WhatsApp"]:hover {
+            background: #25D366;
         }
 
         .contact-item a:hover {
@@ -601,80 +768,114 @@
     <section id="about" class="section about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <p>My name is Mahmoud Hegazy, a computer science graduate and a passionate mobile application developer specializing in Flutter. I help people and businesses by creating easy-to-use mobile applications that support their growth. I chose Flutter because it allows me to build Android and iOS apps from a single codebase with efficiency and a smooth user experience.</p>
+          <p>
+           I'm a Computer Science graduate and a passionate Mobile Application Developer specializing in <strong>Flutter</strong>.  
+            I create intuitive and high-performance mobile applications that help people and businesses grow.  
+            With Flutter, I can build both <strong>Android</strong> and <strong>iOS</strong> apps from a single codebase, ensuring efficiency, consistency, and a seamless user experience.  
+          </p>
         </div>
+        
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2 class="section-title">Projects</h2>
-        <div class="project-card">
-            <!-- Logo Section -->
-            <div class="project-logo-container">
-                <img src="logo.png" alt="Mohamek Logo" class="project-logo">
-            </div>
-            
-            <!-- Screenshots Section -->
-            <div class="screenshots-container">
-                <div class="screenshot">
-                    <img src="Screenshot 2025-09-11 203408.png" alt="Mohamek App Screenshot 1">
-                </div>
-                <div class="screenshot">
-                    <img src="Screenshot 2025-09-11 203500.png" alt="Mohamek App Screenshot 2">
-                </div>
-                <div class="screenshot">
-                    <img src="Screenshot 2025-09-11 203840.png" alt="Mohamek App Screenshot 3">
-                </div>
-                <div class="screenshot">
-                    <img src="Screenshot 2025-09-11 203906.png" alt="Mohamek App Screenshot 4">
-                </div>
-            </div>
-            <div class="project-content">
-                <div class="project-header">
-                    <h3>Mohamek (محاميك) <span class="project-tag">Graduation Project</span></h3>
-                    <a href="https://github.com/mamin144/lawyer_app_booking" target="_blank" class="github-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
-                
-                <p class="project-description">A two-sided mobile application connecting lawyers with clients, streamlining case management, appointment scheduling, and document handling.</p>
-                
-                <div class="project-features">
-                    <h4>Key Features:</h4>
-                    <ul>
-                        <li>🔐 Secure user authentication system</li>
-                        <li>📅 Appointment scheduling and management</li>
-                        <li>📂 Digital case file management</li>
-                        <li>🔔 Real-time notifications</li>
-                        <li>📱 Cross-platform compatibility (iOS & Android)</li>
-                    </ul>
-                </div>
-                
-                <div class="project-tech-stack">
-                    <h4>Tech Stack:</h4>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Flutter</span>
-                        <span class="tech-tag">Dart</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Firestore</span>
-                        <span class="tech-tag">Cloud Functions</span>
-                    </div>
-                </div>
-                
-                <div class="project-achievements">
-                    <h4>Achievements:</h4>
-                    <ul>
-                        <li>Successfully delivered as university graduation project</li>
-                        <li>Developed within strict deadline constraints</li>
-                        <li>Received positive feedback from faculty and peers</li>
-                    </ul>
-                </div>
-            </div>
+<section id="projects" class="section">
+  <h2 class="section-title">Projects</h2>
+  
+  <div class="project-card">
+    <!-- Logo -->
+    <div class="project-logo-container">
+      <img src="logo.png" alt="Mohamek Logo" class="project-logo">
+    </div>
+
+    <!-- Content -->
+    <div class="project-content">
+      <div class="project-header">
+        <div class="project-title-container">
+          <h3>Mohamek (محاميك)</h3>
+          <button class="view-screens-btn active">
+            <span>View Screenshots</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-arrow">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
         </div>
-    </section>
+        <a href="https://github.com/mamin144/lawyer_app_booking" target="_blank" class="github-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 
+            0 0-.94-2.61c3.14-.35 6.44-1.54 
+            6.44-7A5.44 5.44 0 0 0 20 
+            4.77 5.07 5.07 0 0 0 19.91 
+            1S18.73.65 16 2.48a13.38 13.38 
+            0 0 0-7 0C6.27.65 5.09 1 
+            5.09 1A5.07 5.07 0 0 0 5 
+            4.77a5.44 5.44 0 0 0-1.5 
+            3.78c0 5.42 3.3 6.61 6.44 
+            7A3.37 3.37 0 0 0 9 
+            18.13V22"></path>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <p class="project-description">
+        A two-sided mobile application connecting lawyers with clients, streamlining case management, appointment scheduling, and document handling.
+      </p>
+
+      <div class="screenshots-wrapper">
+        <button class="scroll-btn left-scroll" aria-label="Scroll left">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        <div class="screenshots-container">
+          <img src="screen1.png" alt="App Screenshot 1" loading="lazy">
+          <img src="screen5.png" alt="App Screenshot 2" loading="lazy">
+          <img src="screen2.png" alt="App Screenshot 3" loading="lazy">
+          <img src="screen6.png" alt="App Screenshot 4" loading="lazy">
+          <img src="screen3.png" alt="App Screenshot 5" loading="lazy">
+          <img src="screen4.png" alt="App Screenshot 6" loading="lazy">
+        </div>
+        <button class="scroll-btn right-scroll" aria-label="Scroll right">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="project-features">
+        <h4>Key Features:</h4>
+        <ul>
+          <li>🔐 Secure user authentication system</li>
+          <li>📅 Appointment scheduling and management</li>
+          <li>📂 Digital case file management</li>
+          <li>🔔 Real-time notifications</li>
+          <li>📱 Cross-platform compatibility (iOS & Android)</li>
+        </ul>
+      </div>
+
+      <div class="project-tech-stack">
+        <h4>Tech Stack:</h4>
+        <div class="tech-tags">
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Dart</span>
+          <span class="tech-tag">Firebase</span>
+          <span class="tech-tag">Firestore</span>
+          <span class="tech-tag">Cloud Functions</span>
+        </div>
+      </div>
+
+      <div class="project-achievements">
+        <h4>Achievements:</h4>
+        <ul>
+          <li>✅ Delivered successfully as graduation project</li>
+          <li>⚡ Developed under strict deadlines</li>
+          <li>⭐ Received positive faculty & peer feedback</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Skills Section -->
     <section id="skills" class="section">
@@ -749,28 +950,39 @@
         /* Screenshots Container */
         .screenshots-container {
             display: flex;
-            gap: 20px;
-            padding: 30px 20px;
+            gap: 15px;
+            padding: 15px 0;
             overflow-x: auto;
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            align-items: flex-start;  /* Align items to the top */
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .screenshots-container::-webkit-scrollbar {
+            display: none;
         }
         
         .screenshot {
             flex: 0 0 auto;
-            width: 200px;
-            height: 350px;
+            width: 200px;  /* Fixed width */
+            height: 400px;  /* Fixed height */
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             scroll-snap-align: start;
             transition: transform 0.3s ease;
+            position: relative;
         }
         
         .screenshot img {
             width: 100%;
             height: 100%;
+            object-fit: cover;  /* Ensures images cover the area without distortion */
+            object-position: top;  /* Aligns image to the top */
             object-fit: cover;
             display: block;
         }
@@ -806,6 +1018,47 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .project-title-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .view-screens-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-left: 0.5rem;
+        }
+        
+        .view-screens-btn:hover {
+            background: #3e8e41;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .view-screens-btn .dropdown-arrow {
+            transition: transform 0.3s ease;
+            margin-left: 0.25rem;
+        }
+        
+        .view-screens-btn.active .dropdown-arrow {
+            transform: rotate(180deg);
         }
         
         .project-header h3 {
@@ -925,12 +1178,40 @@
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- Education & Certificates Section -->
     <section id="education" class="section education">
-        <h2 class="section-title">Education</h2>
-        <div class="education-card">
-            <h3>Bachelor's Degree in Computer Science</h3>
-            <p>Studied core computer science concepts and software development. Specialized in mobile app development with Flutter framework, gaining comprehensive knowledge in programming fundamentals, algorithms, and software engineering principles.</p>
+        <h2 class="section-title">Education & Certificates</h2>
+        
+        <div class="education-grid">
+            <!-- Education -->
+            <div class="education-card">
+                
+                <h3>Bachelor's Degree in Computer Science</h3>
+                <p>Studied core computer science concepts and software development. Specialized in mobile app development with Flutter framework, gaining comprehensive knowledge in programming fundamentals, algorithms, and software engineering principles.</p>
+            </div>
+            
+            <!-- Certificates -->
+            <div class="education-card">
+              
+                <h3>Digital Egypt Pioneers (DEPI)</h3>
+                <p>Cross-platform mobile developer track. Intensive training and practical projects in mobile application development.</p>
+            </div>
+            
+            <div class="education-card">
+                
+                <h3>Sprints x Microsoft Summer Camp</h3>
+                <p>Completed an intensive summer camp covering Flutter, Dart, OOP concepts, and mobile app development with Microsoft experts.</p>
+            </div>
+            
+            <div class="education-card">
+                <h3>M3aarf Platform</h3>                <p>Programming mobile applications using Flutter. Gained hands-on experience in building cross-platform mobile applications.</p>
+            </div>
+            
+            <div class="education-card">
+                
+                <h3>HP LIFE Online</h3>
+                <p>AI for Beginners course. Learned the fundamentals of artificial intelligence and its practical applications.</p>
+            </div>
         </div>
     </section>
 
@@ -954,18 +1235,19 @@
                 </a>
             </div>
             <div class="contact-item">
-                <a href="https://github.com/mahmoud-hegazy" target="_blank" class="contact-link" title="GitHub">
+                <a href="https://github.com/MahmodHegazy" target="_blank" class="contact-link" title="GitHub">
                     <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.254-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.699 1.028 1.595 1.028 2.688 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48 3.97-1.323 6.833-5.08 6.833-9.501C22 6.484 17.522 2 12 2z"></path>
                     </svg>
                 </a>
             </div>
             <div class="contact-item">
-                <a href="https://wa.me/201155261083" target="_blank" class="contact-link" title="WhatsApp">
-                    <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.7-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4.4-6.2c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.2-1.4-.5-2-1-.7-.6-1.2-1.3-1.6-2.1-.1-.2 0-.4.1-.5.2-.2.5-.5.6-.7.1-.2.1-.4 0-.5-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4-.2 0-.4 0-.6.1-.2.1-.5.4-.6.5-.1.2-.5.5-.5 1.2 0 .7.5 1.4.6 1.5.1.1 1 1.5 2.4 2.1.8.4 1.4.6 1.9.8.2.1.4.1.5.1.2 0 .4-.1.6-.2.2-.1.4-.3.5-.4.1-.1.3-.3.4-.5.1-.2.1-.4.1-.5-.1-.3-.2-.3-.4-.5z"/>
-                    </svg>
-                </a>
+              <a href="https://wa.me/201155261083" target="_blank" class="contact-link" title="WhatsApp">
+                <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 32 32" fill="currentColor">
+                  <path d="M16 .6C7.6.6.7 7.5.7 15.9c0 2.8.7 5.5 2.1 7.9L0 32l8.5-2.6c2.3 1.2 4.9 1.8 7.5 1.8h0c8.4 0 15.3-6.9 15.3-15.3S24.4.6 16 .6zm0 27.9c-2.3 0-4.6-.6-6.6-1.7l-.5-.3-5 1.6 1.6-4.9-.3-.5c-1.3-2.1-2-4.6-2-7.1 0-7.4 6-13.4 13.4-13.4 3.6 0 6.9 1.4 9.4 3.9 2.5 2.5 3.9 5.8 3.9 9.4 0 7.4-6 13.4-13.4 13.4zm7.3-10.1c-.4-.2-2.1-1-2.4-1.1-.3-.1-.5-.2-.7.2s-.8 1.1-1 1.3c-.2.2-.4.2-.8 0s-1.6-.6-3-2c-1.1-1.1-1.8-2.4-2-2.8s0-.6.2-.8c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7s-.7-1.7-1-2.4c-.3-.7-.5-.6-.7-.6h-.6c-.2 0-.6.1-.9.4s-1.2 1.2-1.2 3 1.2 3.4 1.3 3.6c.2.2 2.4 3.7 5.8 5.2.8.3 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 2.1-.9 2.4-1.7.3-.9.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5z"/>
+                </svg>
+              </a>
             </div>
         </div>
     </section>
@@ -982,38 +1264,113 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(50px)';
-            section.style.transition = 'all 0.8s ease-out';
+        document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
         });
 
-        // Smooth scroll for navigation links
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu if open
+                    const nav = document.querySelector('nav ul');
+                    nav.classList.remove('show');
                 }
             });
         });
 
+        // Scroll buttons functionality for screenshots
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.screenshots-container');
+            const scrollAmount = 300; // Adjust this value to control scroll distance
+            
+            // Add click event for left scroll button
+            const leftBtn = document.querySelector('.left-scroll');
+            if (leftBtn) {
+                leftBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+            
+            // Add click event for right scroll button
+            const rightBtn = document.querySelector('.right-scroll');
+            if (rightBtn) {
+                rightBtn.addEventListener('click', () => {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+            
+            // Show/hide scroll buttons based on scroll position
+            function updateButtonVisibility() {
+                if (!container) return;
+                
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                
+                if (leftBtn) {
+                    leftBtn.style.display = scrollLeft > 10 ? 'flex' : 'none';
+                }
+                if (rightBtn) {
+                    rightBtn.style.display = scrollLeft < maxScroll - 10 ? 'flex' : 'none';
+                }
+            }
+            
+            // Initial check
+            updateButtonVisibility();
+            
+            // Update on scroll
+            if (container) {
+                container.addEventListener('scroll', updateButtonVisibility);
+            }
+            
+            // Update on window resize
+            window.addEventListener('resize', updateButtonVisibility);
+        });
+    </script>
+
+    <script>
+        // Toggle screens visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewScreensBtn = document.querySelector('.view-screens-btn');
+            const screensWrapper = document.querySelector('.screenshots-wrapper');
+            
+            if (viewScreensBtn && screensWrapper) {
+                viewScreensBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    if (screensWrapper.style.display === 'none' || !screensWrapper.style.display) {
+                        screensWrapper.style.display = 'block';
+                        // Trigger reflow to enable animation
+                        void screensWrapper.offsetWidth;
+                        screensWrapper.style.opacity = '1';
+                        screensWrapper.style.transform = 'translateY(0)';
+                    } else {
+                        screensWrapper.style.opacity = '0';
+                        screensWrapper.style.transform = 'translateY(-10px)';
+                        // Wait for animation to complete before hiding
+                        setTimeout(() => {
+                            screensWrapper.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+        });
+        
         // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
