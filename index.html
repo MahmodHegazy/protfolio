@@ -193,17 +193,16 @@
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
+            margin: 0 auto 1.5rem;
         }
 
         .profile-card h3 {
