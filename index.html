@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahmoud Hegazy - Flutter Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .contact-btn {
+            background: #333;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #4CAF50;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #4CAF50;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #333;
+            padding: 1rem 2rem;
+            border: 2px solid #333;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            transform: rotate(5deg);
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .profile-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .profile-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f8f9fa;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+            color: #666;
+            position: relative;
+        }
+
+        .experience-item li::before {
+            content: '•';
+            position: absolute;
+            left: -1.5rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Education Section */
+        .education {
+            background: #f8f9fa;
+        }
+
+        .education-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .education-card h3 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .education-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            margin: 0 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: #f0f7f0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-link:hover {
+            background: #4CAF50;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        }
+        
+        .contact-link:hover .contact-logo {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .contact-logo {
+            width: 24px;
+            height: 24px;
+            color: #4CAF50;
+            transition: all 0.3s ease;
+        }
+        
+        /* WhatsApp specific color */
+        a[title="WhatsApp"] .contact-logo {
+            color: #25D366;
+        }
+        
+        a[title="WhatsApp"]:hover .contact-logo {
+            color: white;
+        }
+
+        .contact-item a:hover {
+            color: #4CAF50;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                transform: rotate(0deg);
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+            <a href="#contact" class="contact-btn">Contact Me</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1>Hi! I'm <span class="highlight">Mahmoud Hegazy</span></h1>
+                <p class="subtitle">Flutter Mobile Developer from Boston, turning your ideas into pixel-perfect realities</p>
+                <p>I'm a Flutter mobile developer helping businesses build user-friendly mobile applications that boost their growth. I specialize in turning UI designs into fully functional, high-performance apps.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">View My Projects</a>
+                    <a href="cv.pdf" download="cv.pdf" class="btn-secondary">Download My CV</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <div class="profile-card">
+                  <img src="D:\career\New folder\myphoto.jpg" alt="Mahmoud Hegazy" class="profile-img">
+                    <h3>Mahmoud Hegazy</h3>
+                    <p>Flutter Developer</p>
+                    <p>Available for freelance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>My name is Mahmoud Hegazy, a computer science graduate and a passionate mobile application developer specializing in Flutter. I help people and businesses by creating easy-to-use mobile applications that support their growth. I chose Flutter because it allows me to build Android and iOS apps from a single codebase with efficiency and a smooth user experience.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-card">
+            <!-- Logo Section -->
+            <div class="project-logo-container">
+                <img src="logo.png" alt="Mohamek Logo" class="project-logo">
+            </div>
+            
+            <!-- Screenshots Section -->
+            <div class="screenshots-container">
+                <div class="screenshot">
+                    <img src="Screenshot 2025-09-11 203408.png" alt="Mohamek App Screenshot 1">
+                </div>
+                <div class="screenshot">
+                    <img src="Screenshot 2025-09-11 203500.png" alt="Mohamek App Screenshot 2">
+                </div>
+                <div class="screenshot">
+                    <img src="Screenshot 2025-09-11 203840.png" alt="Mohamek App Screenshot 3">
+                </div>
+                <div class="screenshot">
+                    <img src="Screenshot 2025-09-11 203906.png" alt="Mohamek App Screenshot 4">
+                </div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3>Mohamek (محاميك) <span class="project-tag">Graduation Project</span></h3>
+                    <a href="https://github.com/mamin144/lawyer_app_booking" target="_blank" class="github-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+                
+                <p class="project-description">A two-sided mobile application connecting lawyers with clients, streamlining case management, appointment scheduling, and document handling.</p>
+                
+                <div class="project-features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        <li>🔐 Secure user authentication system</li>
+                        <li>📅 Appointment scheduling and management</li>
+                        <li>📂 Digital case file management</li>
+                        <li>🔔 Real-time notifications</li>
+                        <li>📱 Cross-platform compatibility (iOS & Android)</li>
+                    </ul>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4>Tech Stack:</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Firestore</span>
+                        <span class="tech-tag">Cloud Functions</span>
+                    </div>
+                </div>
+                
+                <div class="project-achievements">
+                    <h4>Achievements:</h4>
+                    <ul>
+                        <li>Successfully delivered as university graduation project</li>
+                        <li>Developed within strict deadline constraints</li>
+                        <li>Received positive feedback from faculty and peers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Technical Skills</h3>
+                <ul class="skill-list">
+                    <li>Dart Programming</li>
+                    <li>Flutter Framework</li>
+                    <li>Firebase Integration</li>
+                    <li>REST APIs</li>
+                    <li>State Management (Bloc/Provider)</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <ul class="skill-list">
+                    <li>Git & GitHub</li>
+                    <li>Android Studio</li>
+                    <li>VS Code</li>
+                    <li>Figma</li>
+                    <li>Firebase Console</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Soft Skills</h3>
+                <ul class="skill-list">
+                    <li>Problem Solving</li>
+                    <li>Communication</li>
+                    <li>Adaptability</li>
+                    <li>Team Collaboration</li>
+                    <li>Project Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Project Card Styling */
+        .project-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Logo Container */
+        .project-logo-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+        
+        .project-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: contain;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Screenshots Container */
+        .screenshots-container {
+            display: flex;
+            gap: 20px;
+            padding: 30px 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .screenshot {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .screenshot:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .project-content {
+            padding: 2.5rem;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-header h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .project-tag {
+            background: #4CAF50;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .github-link:hover {
+            color: #45a049;
+        }
+        
+        .project-description {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        
+        .project-features, .project-tech-stack, .project-achievements {
+            margin-bottom: 2rem;
+        }
+        
+        .project-features h4, .project-tech-stack h4, .project-achievements h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .project-features ul, .project-achievements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .project-features li, .project-achievements li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        
+        .project-features li::before {
+            content: '•';
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech-tag {
+            background: #f0f7f0;
+            color: #2e7d32;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+            
+            .project-features li, .project-achievements li {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">Experience</h2>
+        <div class="experience-item">
+            <h3>Freelance Flutter Developer</h3>
+            <ul>
+                <li>Developed a complete mobile application (Mohamek) from scratch</li>
+                <li>Worked on transforming UI prototypes into functional apps</li>
+                <li>Gained experience in connecting apps with backend services using Firebase</li>
+                <li>Collaborated with clients to understand requirements and deliver solutions</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-card">
+            <h3>Bachelor's Degree in Computer Science</h3>
+            <p>Studied core computer science concepts and software development. Specialized in mobile app development with Flutter framework, gaining comprehensive knowledge in programming fundamentals, algorithms, and software engineering principles.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <a href="mailto:hegazym2002@example.com" class="contact-link">
+                    <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="http://linkedin.com/in/mahmoud-hegazy2" target="_blank" class="contact-link">
+                    <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://github.com/mahmoud-hegazy" target="_blank" class="contact-link" title="GitHub">
+                    <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.254-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.699 1.028 1.595 1.028 2.688 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48 3.97-1.323 6.833-5.08 6.833-9.501C22 6.484 17.522 2 12 2z"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://wa.me/201155261083" target="_blank" class="contact-link" title="WhatsApp">
+                    <svg class="contact-logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.7-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4.4-6.2c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.2-1.4-.5-2-1-.7-.6-1.2-1.3-1.6-2.1-.1-.2 0-.4.1-.5.2-.2.5-.5.6-.7.1-.2.1-.4 0-.5-.1-.2-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4-.2 0-.4 0-.6.1-.2.1-.5.4-.6.5-.1.2-.5.5-.5 1.2 0 .7.5 1.4.6 1.5.1.1 1 1.5 2.4 2.1.8.4 1.4.6 1.9.8.2.1.4.1.5.1.2 0 .4-.1.6-.2.2-.1.4-.3.5-.4.1-.1.3-.3.4-.5.1-.2.1-.4.1-.5-.1-.3-.2-.3-.4-.5z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Mahmoud Hegazy. All rights reserved. Built with HTML & CSS.</p>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+    </script>
+
+    <script>
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate logo on load
+            const logo = document.querySelector('.project-logo');
+            setTimeout(() => {
+                logo.classList.add('visible');
+                
+                // After logo animation, set up observer for screenshots
+                const screenshots = document.querySelector('.project-screenshots');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of the element is visible
+                });
+                
+                observer.observe(screenshots);
+            }, 500);
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
