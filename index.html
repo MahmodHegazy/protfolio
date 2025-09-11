@@ -369,12 +369,13 @@
 
 .screenshots-wrapper {
             position: relative;
-            margin: 1.5rem 0;
+            margin: 0;
             opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            max-width: 100%;
+            height: 0;
             overflow: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease, margin 0.3s ease;
+            max-width: 100%;
         }
         
         .screenshots-container {
@@ -793,7 +794,7 @@
         <div class="project-title-container">
           <h3>Mohamek (محاميك)</h3>
           <button class="view-screens-btn active">
-            <span>View Screenshots</span>
+            <span>View App</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-arrow">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
@@ -1350,21 +1351,36 @@
             const viewScreensBtn = document.querySelector('.view-screens-btn');
             const screensWrapper = document.querySelector('.screenshots-wrapper');
             
+            // Hide screenshots by default
+            if (screensWrapper) {
+                screensWrapper.style.display = 'none';
+                screensWrapper.style.opacity = '0';
+                screensWrapper.style.height = '0';
+                screensWrapper.style.margin = '0';
+            }
+            
             if (viewScreensBtn && screensWrapper) {
                 viewScreensBtn.addEventListener('click', function() {
-                    this.classList.toggle('active');
-                    if (screensWrapper.style.display === 'none' || !screensWrapper.style.display) {
+                    const isOpening = !this.classList.toggle('active');
+                    
+                    if (isOpening) {
                         screensWrapper.style.display = 'block';
-                        // Trigger reflow to enable animation
+                        // Force reflow to enable transition
                         void screensWrapper.offsetWidth;
                         screensWrapper.style.opacity = '1';
+                        screensWrapper.style.height = 'auto';
+                        screensWrapper.style.margin = '1.5rem 0';
                         screensWrapper.style.transform = 'translateY(0)';
                     } else {
                         screensWrapper.style.opacity = '0';
+                        screensWrapper.style.height = '0';
+                        screensWrapper.style.margin = '0';
                         screensWrapper.style.transform = 'translateY(-10px)';
                         // Wait for animation to complete before hiding
                         setTimeout(() => {
-                            screensWrapper.style.display = 'none';
+                            if (!viewScreensBtn.classList.contains('active')) {
+                                screensWrapper.style.display = 'none';
+                            }
                         }, 300);
                     }
                 });
