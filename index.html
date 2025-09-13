@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahmoud Hegazy - Flutter Developer</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Freelance Buttons Hover Effect */
+        .freelance-btn {
+            transition: all 0.3s ease;
+        }
+        .freelance-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+        }
+    </style>
     <style>
         * {
             margin: 0;
@@ -1178,7 +1190,6 @@
                 <li>Collaborated with clients to understand requirements and deliver solutions</li>
             </ul>
         </div>
-    </section>
 
     <!-- Education & Certificates Section -->
     <section id="education" class="section education">
@@ -1217,8 +1228,48 @@
         </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services" class="section" style="background-color: #f8f9fa;">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 0 2rem;">
+            <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #e8f5e9; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-mobile-alt" style="font-size: 1.8rem; color: #4CAF50;"></i>
+                </div>
+                <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.4rem;">Mobile Applications</h3>
+                <p style="color: #666; line-height: 1.6; margin: 0;">
+                    Professional mobile application development using Flutter framework. Creating cross-platform, high-performance applications with beautiful UI/UX design.
+                </p>
+            </div>
+            <div class="service-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s ease;">
+                <div style="width: 60px; height: 60px; background: #e8f5e9; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-paint-brush" style="font-size: 1.8rem; color: #4CAF50;"></i>
+                </div>
+                <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.4rem;">App Design to Development</h3>
+                <p style="color: #666; line-height: 1.6; margin: 0;">
+                    Complete solution from app design to development. Transforming your ideas into fully functional mobile applications with attention to detail and user experience.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section" style="background-color: #f8f9fa;">
+        <h2 class="section-title">Hire Me</h2>
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h3 style="font-size: 1.5rem; color: #333; margin-bottom: 2rem;">Available for Freelance Work</h3>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 0 auto 2rem; max-width: 900px;">
+                <a href="https://www.fiverr.com/mahmoudhegaz588/buying?source=avatar_menu_profile" target="_blank" style="background: #1DBF73; color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3);">
+                    <i class="fab fa-font-awesome-flag"></i> Fiverr
+                </a>
+                <a href="https://khamsat.com/user/mahmoud_hegazy22" target="_blank" style="background: #FF6B2B; color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 107, 43, 0.3);">
+                    <i class="fas fa-hand-holding-usd"></i> خمسات
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01636f1422409845ed?mp_source=share" target="_blank" style="background: #14A800; color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(20, 168, 0, 0.3);">
+                    <i class="fab fa-upwork"></i> Upwork
+                </a>
+            </div>
+        </div>
         <h2 class="section-title">Contact</h2>
         <div class="contact-grid">
             <div class="contact-item">
